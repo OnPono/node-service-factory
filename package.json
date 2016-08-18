@@ -1,0 +1,42 @@
+{
+  "name": "node-service-factory",
+  "version": "0.0.1",
+  "description": "Generate services for your service oriented Node.js architecture",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install",
+    "test": "NODE_ENV=test gulp test",
+    "test-watch": "NODE_ENV=test gulp test-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OnPono/node-service-factory.git"
+  },
+  "keywords": [
+    "service",
+    "micro-service",
+    "node-service",
+    "mongo",
+    "mongodb"
+  ],
+  "author": "lazlojuly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OnPono/node-service-factory/issues"
+  },
+  "homepage": "https://github.com/OnPono/node-service-factory#readme",
+  "dependencies": {
+    "mongoose": "^4.5.9"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^1.2.0",
+    "eslint": "^3.3.1",
+    "eslint-config-onpono-base": "^1.0.0",
+    "eslint-plugin-import": "^1.13.0",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^3.0.1",
+    "mocha": "^3.0.2",
+    "run-sequence": "^1.2.2",
+    "should": "^11.1.0"
+  }
+}
