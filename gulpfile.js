@@ -1,11 +1,10 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 const gulp = require('gulp')
 const mocha = require('gulp-mocha')
 const runSequence = require('run-sequence')
 
 const config = {
 	src: './src/**/*.js',
-	test: './src/test/**/*.js',
+	test: './src/test/**/*.spec.js',
 }
 
 gulp.task('test-watch', () => {

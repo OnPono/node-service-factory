@@ -1,6 +1,6 @@
 # Node Service Factory
 
-Generate service modules for your service oriented Node.js architecture (user, auth, todo etc.)
+Generate simple CRUD service modules for your service oriented Node.js architecture (user, auth, todo etc.)
 
 ## Introduction
 
