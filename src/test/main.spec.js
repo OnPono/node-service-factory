@@ -1,40 +1,65 @@
 require('should')
 const BaseService = require('../BaseService')
-const BaseModel = require('../BaseModel')
+const ModelFactory = require('../ModelFactory')
 const UserService = require('./UserService')
-const UserModel = require('./UserModel')
+const userModel = require('./user.model.js')
+const mongoose = require('mongoose')
+const mockgoose = require('mockgoose')
 
-context('factory', () => {
+const defaultMethods = ['create', 'find', 'findById', 'update', 'removeById', 'toObject']
 
-	before(() => {})
+context('main tests', () => {
+
+	let modelFactory
+
+	before(() => {
+		return mockConnect(mongoose).then(db => {
+			modelFactory = new ModelFactory(db)
+		})
+	})
+
+	after(() => { return mockClose(mongoose) })
 
 	describe('new BaseService()', () => {
 
+		let model
 		let service
 		before(() => {
-			service = new BaseService('Test', new BaseModel())
+			model = modelFactory.create('Test')
+			service = new BaseService('Test', model)
 		})
 
-		it('returns an instance of a default service object', () => {
+		it('is an instance of a BaseService object', () => {
 			return service.should.be.instanceof(BaseService)
 		})
 
-		it('default instance contains all default methods', () => {
-			const defaultMethods = ['create', 'find', 'findById', 'update', 'removeById', 'toObject']
+		it('contains all default methods', () => {
 			return methodsExist(service, defaultMethods).should.be.true()
 		})
 
 	})
 
-	describe('extending BaseService', () => {
+	describe('new UserService()', () => {
 
 		let userService
 		before(() => {
-			userService = new UserService('User', new UserModel())
+			userService = new UserService('Test', userModel(mongoose))
 		})
 
-		it('userService implements custom create method', () => {
-			return true
+		it('extends BaseService', () => {
+			return (typeof userService.prototype === BaseService)
+		})
+
+		it('contains all default methods', () => {
+			return methodsExist(userService, defaultMethods).should.be.true()
+		})
+
+		it('implements custom create method', () => {
+			return userService.create({
+				firstName: 'Homer',
+				lastName: 'Simpson',
+				email: 'homer@simpsons.com',
+			}).should.be.rejectedWith('Password is required')
 		})
 
 	})
@@ -44,4 +69,20 @@ context('factory', () => {
 // helpers
 function methodsExist(instance, methods) {
 	return methods.every(method => (typeof instance[method] === 'function'))
+}
+
+function mockConnect(db) {
+	return new Promise((resolve, reject) => {
+		return mockgoose(db).then(() => {
+			db.connect('node-service-factory-tests', err => {
+				return (err) ? reject(err) : resolve(db)
+			})
+		})
+	})
+}
+
+function mockClose(db) {
+	return new Promise((resolve, reject) => {
+		db.connection.close(err => { return (err) ? reject(err) : resolve() })
+	})
 }

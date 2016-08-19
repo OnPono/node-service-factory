@@ -1,11 +1,21 @@
-const UserModel = require('./UserModel')
 const BaseService = require('../BaseService')
 
 module.exports = class UserService extends BaseService {
 
-	constructor(options) {
-		super(options)
-		this.model = new UserModel(options)
+	create(user) {
+		user.createdAt = new Date()
+		const u = new this.Model(user)
+		return new Promise((resolve, reject) => {
+			if (!user.password) {
+				reject(new Error('Password is required'))
+			} else {
+				resolve('hashed-password')
+			}
+		})
+		.then(hash => {
+			u.password = hash
+			return u.save()
+		})
 	}
 
 }
