@@ -11,7 +11,7 @@ Generate simple CRUD service modules for your service oriented Node.js architect
 ## Installation
 
 Requirements
-* MongoDB (with Mongoose) (link how to install Mongo)
+* MongoDB (with Mongoose)
 * Node 6
 
 ```
