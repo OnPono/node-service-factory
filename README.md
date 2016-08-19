@@ -22,7 +22,7 @@ npm i node-service-utils --save
 
 *Note: Look at `/src/test` folder for more detailed examples.*
 
-```
+```javascript
 mongoose = require('mongoose')
 serviceUtils = require('node-service-utils')
 
