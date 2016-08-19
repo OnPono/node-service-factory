@@ -1,6 +1,6 @@
 {
   "name": "node-service-factory",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate services for your service oriented Node.js architecture",
   "main": "index.js",
   "scripts": {
