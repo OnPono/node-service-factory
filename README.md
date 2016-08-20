@@ -24,10 +24,10 @@ npm i node-service-utils --save
 
 ```javascript
 mongoose = require('mongoose')
-serviceUtils = require('node-service-utils')
+const { BaseService, ModelFactory } = require('node-service-utils')
 
 // Your custom service class
-class UserService extends serviceUtils.BaseService {
+class UserService extends BaseService {
 	// ... custom CRUD methods
 }
 
