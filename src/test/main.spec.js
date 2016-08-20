@@ -72,17 +72,12 @@ function methodsExist(instance, methods) {
 }
 
 function mockConnect(db) {
-	return new Promise((resolve, reject) => {
-		return mockgoose(db).then(() => {
-			db.connect('node-service-factory-tests', err => {
-				return (err) ? reject(err) : resolve(db)
-			})
-		})
+	db.Promise = global.Promise
+	return mockgoose(db).then(() => {
+		return db.connect('node-service-factory-tests').then(() => db)
 	})
 }
 
 function mockClose(db) {
-	return new Promise((resolve, reject) => {
-		db.connection.close(err => { return (err) ? reject(err) : resolve() })
-	})
+	return db.connection.close()
 }
