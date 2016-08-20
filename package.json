@@ -1,6 +1,6 @@
 {
   "name": "node-service-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generate services for your service oriented Node.js architecture",
   "main": "src/index.js",
   "scripts": {
@@ -12,13 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/OnPono/node-service-utils.git"
   },
-  "keywords": [
-    "service",
-    "micro-service",
-    "node-service",
-    "mongo",
-    "mongodb"
-  ],
+  "keywords": [],
   "author": "lazlojuly",
   "license": "ISC",
   "bugs": {
