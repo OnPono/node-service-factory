@@ -32,7 +32,7 @@ class UserService extends serviceUtils.BaseService {
 }
 
 // Your custom model for your service class
-function userModel(db) => {
+function userModel(db) {
 
 	const schema = {
 		firstName: { type: String, required: true },
