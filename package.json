@@ -1,8 +1,8 @@
 {
   "name": "node-service-utils",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Generate services for your service oriented Node.js architecture",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "npm install",
     "test": "NODE_ENV=test gulp test",
